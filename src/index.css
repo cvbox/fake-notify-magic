@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,7 +33,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -97,5 +98,77 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 100px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@layer components {
+  .glass-morphism {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-md;
+  }
+  
+  .phone-display {
+    background-image: linear-gradient(to bottom, rgba(144, 88, 160, 0.4) 0%, rgba(90, 125, 191, 0.6) 100%);
+  }
+  
+  .notification-container {
+    backdrop-filter: blur(10px);
+    background-color: rgba(38, 38, 38, 0.7);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-icon-container {
+    @apply bg-white/5 rounded-md overflow-hidden p-1 relative cursor-pointer transition-all duration-300 ease-in-out;
+  }
+  
+  .app-icon-container:hover {
+    @apply bg-white/10 transform scale-105;
+  }
+  
+  .app-icon-container.active {
+    @apply ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+  
+  .wallpaper-container {
+    @apply relative overflow-hidden cursor-pointer transition-transform duration-300 ease-in-out;
+  }
+  
+  .wallpaper-container:hover {
+    @apply transform scale-105;
+  }
+  
+  .wallpaper-container.active {
+    @apply ring-2 ring-primary;
+  }
+  
+  .custom-input {
+    @apply transition-all duration-300 ease-in-out focus:ring-1 focus:ring-primary focus:border-primary;
+  }
+  
+  .custom-select {
+    @apply transition-all duration-300 ease-in-out focus:ring-1 focus:ring-primary focus:border-primary;
+  }
+  
+  .download-button {
+    @apply bg-gradient-to-r from-amber-500 to-orange-400 hover:from-amber-600 hover:to-orange-500 text-white font-medium py-3 px-4 rounded-md transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-lg flex items-center justify-center gap-2;
   }
 }
