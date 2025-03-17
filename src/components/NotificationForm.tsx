@@ -8,6 +8,7 @@ import WallpaperSelector from './WallpaperSelector';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 interface NotificationFormProps {
   selectedApp: AppIconType | null;
@@ -110,19 +111,21 @@ const NotificationForm: React.FC<NotificationFormProps> = ({
           </div>
           
           <div>
-            <Label htmlFor="position" className="text-base mb-1 block">Position</Label>
-            <Select
-              value={position}
+            <Label className="text-base mb-2 block">Position</Label>
+            <RadioGroup 
+              value={position} 
               onValueChange={(value) => setPosition(value as 'top' | 'bottom')}
+              className="flex gap-4"
             >
-              <SelectTrigger id="position" className="custom-select">
-                <SelectValue placeholder="Choose position" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="top">Top</SelectItem>
-                <SelectItem value="bottom">Bottom</SelectItem>
-              </SelectContent>
-            </Select>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="top" id="position-top" />
+                <Label htmlFor="position-top" className="cursor-pointer">Top</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="bottom" id="position-bottom" />
+                <Label htmlFor="position-bottom" className="cursor-pointer">Bottom</Label>
+              </div>
+            </RadioGroup>
           </div>
           
           <div>

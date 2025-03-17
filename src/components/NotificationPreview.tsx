@@ -80,7 +80,7 @@ const NotificationPreview: React.FC<NotificationPreviewProps> = ({
           >
             <div className={cn(
               "notification-container rounded-xl p-4 animate-fade-in",
-              position === 'top' ? 'mt-12 mb-auto' : 'mt-auto'
+              position === 'top' ? 'mt-16' : 'mt-auto mb-16'
             )}>
               <div className="flex items-start space-x-3">
                 {selectedApp && (
