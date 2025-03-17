@@ -18,7 +18,7 @@ interface NotificationPreviewProps {
   wallpaper: WallpaperType | undefined;
   customTime: string;
   customDate: string;
-  position: 'top' | 'bottom' | 'middle';
+  position: 'bottom' | 'middle';
   theme: 'light' | 'dark';
   className?: string;
 }
@@ -83,14 +83,12 @@ const NotificationPreview: React.FC<NotificationPreviewProps> = ({
             className="animate-slide-in"
           >
             <div className={cn(
-              "notification-container rounded-xl p-4 animate-fade-in",
-              position === 'top' ? 'mt-24' : 
-              position === 'middle' ? 'mt-[40%]' : 
-              'mt-auto mb-24'
+              "notification-container w-full rounded-xl p-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-lg",
+              position === 'middle' ? 'absolute top-[45%]' : 'absolute bottom-[15%]'
             )}>
-              <div className="flex items-start space-x-3">
+              <div className="flex items-center space-x-3">
                 {selectedApp && (
-                  <div className="flex-shrink-0 rounded-md overflow-hidden self-center">
+                  <div className="flex-shrink-0 self-center">
                     <img 
                       src={selectedApp.iconSrc} 
                       alt={selectedApp.name}
@@ -100,10 +98,10 @@ const NotificationPreview: React.FC<NotificationPreviewProps> = ({
                 )}
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start">
-                    <h3 className="text-white font-medium">{title || selectedApp?.name || "App"}</h3>
-                    <span className="text-white/80 text-xs">{timePeriod}</span>
+                    <h3 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{title || selectedApp?.name || "App"}</h3>
+                    <span className={`text-xs ${theme === 'dark' ? 'text-white/80' : 'text-gray-500'}`}>{timePeriod}</span>
                   </div>
-                  <p className="text-white/90 text-sm line-clamp-2 mt-1">{description}</p>
+                  <p className={`text-sm line-clamp-2 mt-1 ${theme === 'dark' ? 'text-white/90' : 'text-gray-700'}`}>{description}</p>
                 </div>
               </div>
             </div>

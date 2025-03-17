@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { AppIconType, appIcons } from '@/utils/appIcons';
@@ -17,8 +16,8 @@ interface NotificationFormProps {
   setTitle: (title: string) => void;
   description: string;
   setDescription: (description: string) => void;
-  position: 'top' | 'bottom' | 'middle';
-  setPosition: (position: 'top' | 'bottom' | 'middle') => void;
+  position: 'bottom' | 'middle';
+  setPosition: (position: 'bottom' | 'middle') => void;
   timePeriod: string;
   setTimePeriod: (time: string) => void;
   carrier: string;
@@ -114,13 +113,9 @@ const NotificationForm: React.FC<NotificationFormProps> = ({
             <Label className="text-base mb-2 block">Position</Label>
             <RadioGroup 
               value={position} 
-              onValueChange={(value) => setPosition(value as 'top' | 'bottom' | 'middle')}
+              onValueChange={(value) => setPosition(value as 'bottom' | 'middle')}
               className="flex gap-4"
             >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="top" id="position-top" />
-                <Label htmlFor="position-top" className="cursor-pointer">Top</Label>
-              </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="middle" id="position-middle" />
                 <Label htmlFor="position-middle" className="cursor-pointer">Middle</Label>

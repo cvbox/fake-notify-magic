@@ -46,16 +46,12 @@ const PhoneFrame: React.FC<PhoneFrameProps> = ({
           </div>
         </div>
         
-        {/* Date */}
-        <div className="absolute top-14 w-full text-center">
-          <div className="text-white font-light text-xl animate-fade-in">
+        {/* Date and Time - adjusted spacing */}
+        <div className="absolute top-[20%] w-full flex flex-col items-center">
+          <div className="text-white font-light text-xl mb-1">
             {date}
           </div>
-        </div>
-        
-        {/* Time */}
-        <div className="absolute top-1/4 w-full text-center">
-          <div className="text-white font-light text-7xl animate-fade-in">
+          <div className="text-white font-light text-7xl">
             {time}
           </div>
         </div>
