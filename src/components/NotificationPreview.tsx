@@ -18,7 +18,8 @@ interface NotificationPreviewProps {
   wallpaper: WallpaperType | undefined;
   customTime: string;
   customDate: string;
-  position: 'top' | 'bottom';
+  position: 'top' | 'bottom' | 'middle';
+  theme: 'light' | 'dark';
   className?: string;
 }
 
@@ -33,6 +34,7 @@ const NotificationPreview: React.FC<NotificationPreviewProps> = ({
   customTime,
   customDate,
   position,
+  theme,
   className
 }) => {
   const phoneRef = useRef<HTMLDivElement>(null);
@@ -76,15 +78,19 @@ const NotificationPreview: React.FC<NotificationPreviewProps> = ({
             wallpaper={wallpaper}
             time={customTime || "21:18"}
             date={customDate || "Monday, March 17"}
+            carrier={carrier}
+            theme={theme}
             className="animate-slide-in"
           >
             <div className={cn(
               "notification-container rounded-xl p-4 animate-fade-in",
-              position === 'top' ? 'mt-16' : 'mt-auto mb-16'
+              position === 'top' ? 'mt-24' : 
+              position === 'middle' ? 'mt-[40%]' : 
+              'mt-auto mb-24'
             )}>
               <div className="flex items-start space-x-3">
                 {selectedApp && (
-                  <div className="flex-shrink-0 rounded-md overflow-hidden">
+                  <div className="flex-shrink-0 rounded-md overflow-hidden self-center">
                     <img 
                       src={selectedApp.iconSrc} 
                       alt={selectedApp.name}
@@ -102,11 +108,6 @@ const NotificationPreview: React.FC<NotificationPreviewProps> = ({
               </div>
             </div>
           </PhoneFrame>
-          
-          {/* Status bar overlay for carrier */}
-          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-xs font-medium z-20">
-            {carrier}
-          </div>
         </div>
       </div>
       
